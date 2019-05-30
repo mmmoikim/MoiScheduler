@@ -1,6 +1,6 @@
 <template>
-  <v-layout align-start justify-space-around row fill-height>
-    <v-toolbar color="cyan" dark>
+  <v-flex align-start :class="$style['header_wrap']">
+    <v-toolbar color="primary" dark dense>
       <v-toolbar-side-icon></v-toolbar-side-icon>
       <v-toolbar-title>Moi Scheduler</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -8,8 +8,7 @@
         <v-icon>search</v-icon>
       </v-btn>
     </v-toolbar>
-
-  </v-layout>
+  </v-flex>
 </template>
 
 <script>
@@ -19,3 +18,7 @@ export default {
   }
 }
 </script>
+
+<style module lang="scss">
+@import "Styles/common.scss";
+</style>

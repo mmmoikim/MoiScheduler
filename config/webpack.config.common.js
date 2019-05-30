@@ -2,8 +2,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const path = require('path');
-const APP_DIR = path.resolve(__dirname, 'src');
-const BUILD_DIR = path.resolve(__dirname, 'dist');
+const APP_DIR = path.resolve(__dirname, '../src');
+const BUILD_DIR = path.resolve(__dirname, '../dist');
+
+const commonModule = require('./commonModule');
 
 module.exports = {
     entry: {
@@ -13,28 +15,7 @@ module.exports = {
         filename: '[name].bundle.js',
         path: BUILD_DIR
     },
-    module: {
-        rules: [{
-                test: /\.js/,
-                exclude: /(node_modules)/,
-                use: [{
-                    loader: 'babel-loader'
-                }]
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    //for css tag in .vue
-                    'vue-style-loader',
-                    'css-loader'
-                ]
-            }
-        ]
-    },
+    module: commonModule,
     resolve: {
         alias: {
             'Styles': APP_DIR + '/assets/styles',
